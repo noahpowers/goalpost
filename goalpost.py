@@ -24,5 +24,5 @@ class Data:
             headers = ''.join(child.findAll('td')[0].contents).encode('utf-8').strip()
             home_team = ''.join(child.findAll('td')[2].contents).encode('utf-8').strip()
             away_team = ''.join(child.findAll('td')[1].contents).encode('utf-8').strip()
-            list.append("{},{},{}".format(headers,away_team,home_team)
-        print list
+            list.append("{},{},{}".format(headers,away_team,home_team))
+        return list
