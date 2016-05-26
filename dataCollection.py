@@ -19,7 +19,7 @@ for child in teams:
     score = ''.join(child.findAll('td')[5].contents).encode('utf-8').strip()
     list.append("{},{},".format(team,score))
 
-print(list)
+return list
 
 #for child in full_results:
 #    headers = ''.join(child.findAll('td')[0].contents).encode('utf-8').strip()
