@@ -27,13 +27,14 @@ class Data:
             list.append([headers,away_team,home_team])
         return list
 
-class ID:
-    def __init__(self,Data):
+class ID(Data):
+    def __init__(self):
         self = self
 
     def location(self,team,record):
         field = ""
-        if team == record[0]:
+        print(record[0][0])
+        if team == record[0][0]:
             field = 0
         else:
             field = 1
