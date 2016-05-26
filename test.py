@@ -11,6 +11,7 @@ stats = data.gatherStats(url)
 count = 0 
 while count < len(stats):
     header = stats[count][0]
-    statistic = stats[count][1]
-    print"{} for {} were {}".format(header,awayScore[0],statistic)
+#    statistic = stats[count][1]
+#    print"{} for {} were {}".format(header,awayScore[0],statistic)
+    print"{}            count[{}]".format(header,count)
     count += 1
