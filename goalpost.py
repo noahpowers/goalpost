@@ -26,3 +26,15 @@ class Data:
             home_team = ''.join(child.findAll('td')[2].contents).encode('utf-8').strip()
             list.append([headers,away_team,home_team])
         return list
+
+class ID:
+    def __init__(self,Data):
+        self = self
+
+    def location(self,team,record):
+        field = ""
+        if team == record[0]:
+            field = 0
+        else:
+            field = 1
+        return field
