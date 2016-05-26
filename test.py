@@ -3,8 +3,14 @@ from goalpost import *
 url = "http://espn.go.com/nfl/matchup?gameId=400791489"
 
 data = Data()
-data.gatherTeams(url)
-awayScore = data.gatherTeams(url)
-homeScore = data.gatherTeams(url)
+teams = data.gatherTeams(url)
+awayScore = teams[0]
+homeScore = teams[1]
+stats = data.gatherStats(url)
 
-print "The {} scored {} on the road, while the {} scored {}".format(awayScore[0][0],awayScore[0][1],homeScore[1][0],homeScore[1][1])
+count = 0 
+while count < len(stats):
+    header = stats[count][0]
+    statistic = stats[count][1]
+    print"{} for {} were {}".format(header,awayScore[0],statistic)
+    count += 1
