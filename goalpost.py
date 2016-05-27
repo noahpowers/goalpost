@@ -39,3 +39,7 @@ class ID(Data):
         else:
             field = 1
         return field
+
+    def ratio(self,stat1,stat2):
+        statistic = "%.4f" % (int(stat1) / float(int(stat2)))
+        print statistic
