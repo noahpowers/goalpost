@@ -32,8 +32,8 @@ class ID(Data):
         self = self
 
     def location(self,team,record):
+#### home team has a value of '1', or True, whereas the away team has a value or '0', or False
         field = ""
-        print(record[0][0])
         if team == record[0][0]:
             field = 0
         else:
@@ -42,4 +42,12 @@ class ID(Data):
 
     def ratio(self,stat1,stat2):
         statistic = "%.4f" % (int(stat1) / float(int(stat2)))
-        print statistic
+        return statistic
+
+    def win(self,score):
+        if int(score) >= 0:
+            status = 1
+        else:
+            status = 0
+        return status
+
