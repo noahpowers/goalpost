@@ -4,7 +4,7 @@ from goalpost import *
 away = sys.argv[1]
 home = sys.argv[2]
 week = sys.argv[3]
-#url = sys.argv[3]
+#url = "http://espn.go.com/nfl/matchup?gameId=" + str(sys.argv[3])
 
 url = "http://espn.go.com/nfl/matchup?gameId=400791489"
 
