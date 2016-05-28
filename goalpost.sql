@@ -24,51 +24,6 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `goalpost` /*!40100 DEFAULT CHARACTER S
 USE `goalpost`;
 
 --
--- Table structure for table `CHI`
---
-
-DROP TABLE IF EXISTS `CHI`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `CHI` (
-  `record` int(10) NOT NULL AUTO_INCREMENT,
-  `year` int(4) DEFAULT NULL,
-  `team` varchar(4) DEFAULT NULL,
-  `week` int(2) DEFAULT NULL,
-  `home` int(1) DEFAULT NULL,
-  `scoreDiff` int(3) DEFAULT NULL,
-  `off_firstdown` int(2) DEFAULT NULL,
-  `def_firstdown` int(2) DEFAULT NULL,
-  `down_ratio` decimal(6,4) DEFAULT NULL,
-  `off_plays` int(3) DEFAULT NULL,
-  `def_plays` int(3) DEFAULT NULL,
-  `play_ratio` decimal(6,4) DEFAULT NULL,
-  `off_yards` int(3) DEFAULT NULL,
-  `def_yards` int(3) DEFAULT NULL,
-  `yard_ratio` decimal(6,4) DEFAULT NULL,
-  `ratio_inverse` decimal(6,4) DEFAULT NULL,
-  `off_yards_perplay` decimal(4,2) DEFAULT NULL,
-  `def_yards_perplay` decimal(4,2) DEFAULT NULL,
-  `ratio_yards` decimal(6,4) DEFAULT NULL,
-  `avg_penalty_yards` decimal(6,4) DEFAULT NULL,
-  `num_penalty` int(2) DEFAULT NULL,
-  `total_pentalty_yards` int(3) DEFAULT NULL,
-  `turnovers` int(2) DEFAULT NULL,
-  `sacks` int(2) DEFAULT NULL,
-  PRIMARY KEY (`record`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `CHI`
---
-
-LOCK TABLES `CHI` WRITE;
-/*!40000 ALTER TABLE `CHI` DISABLE KEYS */;
-/*!40000 ALTER TABLE `CHI` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `GB`
 --
 
@@ -113,50 +68,6 @@ LOCK TABLES `GB` WRITE;
 /*!40000 ALTER TABLE `GB` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `NE`
---
-
-DROP TABLE IF EXISTS `NE`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `NE` (
-  `record` int(10) NOT NULL AUTO_INCREMENT,
-  `year` int(4) DEFAULT NULL,
-  `team` varchar(4) DEFAULT NULL,
-  `week` int(2) DEFAULT NULL,
-  `home` int(1) DEFAULT NULL,
-  `scoreDiff` int(3) DEFAULT NULL,
-  `off_firstdown` int(2) DEFAULT NULL,
-  `def_firstdown` int(2) DEFAULT NULL,
-  `down_ratio` decimal(6,4) DEFAULT NULL,
-  `off_plays` int(3) DEFAULT NULL,
-  `def_plays` int(3) DEFAULT NULL,
-  `play_ratio` decimal(6,4) DEFAULT NULL,
-  `off_yards` int(3) DEFAULT NULL,
-  `def_yards` int(3) DEFAULT NULL,
-  `yard_ratio` decimal(6,4) DEFAULT NULL,
-  `ratio_inverse` decimal(6,4) DEFAULT NULL,
-  `off_yards_perplay` decimal(4,2) DEFAULT NULL,
-  `def_yards_perplay` decimal(4,2) DEFAULT NULL,
-  `ratio_yards` decimal(6,4) DEFAULT NULL,
-  `avg_penalty_yards` decimal(6,4) DEFAULT NULL,
-  `num_penalty` int(2) DEFAULT NULL,
-  `total_pentalty_yards` int(3) DEFAULT NULL,
-  `turnovers` int(2) DEFAULT NULL,
-  `sacks` int(2) DEFAULT NULL,
-  PRIMARY KEY (`record`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `NE`
---
-
-LOCK TABLES `NE` WRITE;
-/*!40000 ALTER TABLE `NE` DISABLE KEYS */;
-/*!40000 ALTER TABLE `NE` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
