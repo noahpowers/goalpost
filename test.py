@@ -1,5 +1,9 @@
 import sys
+import mysql.connector as mariadb
 from goalpost import *
+
+mariadb_connection = mariadb.connect(host='127.0.0.1', user='goalpost', password="mariadb", database='goalpost')
+cursor = mariadb_connection.cursor()
 
 away = sys.argv[1]
 home = sys.argv[2]
@@ -67,4 +71,8 @@ while team_count < len(team):
 
     print "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY,Turnovers,Sacks)
 
+    cursor.execute("""INSERT INTO %s (year,team,week,home,scoreDiff,off_firstdown,def_firstdown,down_ratio,off_plays,def_plays,play_ratio,off_yards,def_yards,yard_ratio,ratio_inverse,off_yards_perplay,def_yards_perplay,ratio_yards,avg_penalty_yards,num_penalty,total_penalty_yards,turnovers,sacks) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (team[team_count],year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY,Turnovers,Sacks))
+    mariadb_connection.commit()
+
     team_count += 1
+    mariadb_connection.close()
