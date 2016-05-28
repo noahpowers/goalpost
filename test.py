@@ -61,6 +61,10 @@ while team_count < len(team):
     totalP, totalPY = temp.split('-')
     avgPenalties = data.ratio(totalPY,totalP)
 
-    print "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY)
+## turnovers
+    Turnovers = stats[20][offense]
+    Sacks, SackYards= (stats[14][offense]).split('-')
+
+    print "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY,Turnovers,Sacks)
 
     team_count += 1
