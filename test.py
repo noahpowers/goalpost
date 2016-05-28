@@ -4,7 +4,7 @@ from goalpost import *
 away = sys.argv[1]
 home = sys.argv[2]
 week = sys.argv[3]
-#url = "http://espn.go.com/nfl/matchup?gameId=" + str(sys.argv[3])
+#url = "http://espn.go.com/nfl/matchup?gameId=" + str(sys.argv[4])
 
 url = "http://espn.go.com/nfl/matchup?gameId=400791489"
 
@@ -44,6 +44,23 @@ while team_count < len(team):
     offPlays = stats[6][offense]
     defPlays = stats[6][defense]
     ratioPlays = data.ratio(offPlays,defPlays)
-    print "{},{},{},{},{},{},{},{},{},{},{}".format(year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays)
+
+## total yards
+    offYards = stats[7][offense]
+    defYards = stats[7][defense]
+    ratioYards = data.ratio(offYards,defYards)
+    invYardsRatio = data.ratio(defYards,offYards)
+
+## yards per play
+    offYPP = stats[9][offense]
+    defYPP = stats[9][defense]
+#    ratioYPP = data.ratio(offYPP,defYPP)
+
+## penalties
+    temp = (stats[19][offense])
+    totalP, totalPY = temp.split('-')
+    avgPenalties = data.ratio(totalPY,totalP)
+
+    print "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY)
 
     team_count += 1
