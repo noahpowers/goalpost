@@ -8,14 +8,14 @@ cursor = mariadb_connection.cursor()
 away = sys.argv[1]
 home = sys.argv[2]
 week = sys.argv[3]
-#url = "http://espn.go.com/nfl/matchup?gameId=" + str(sys.argv[4])
+url = "http://espn.go.com/nfl/matchup?gameId=" + str(sys.argv[4])
 
-url = "http://espn.go.com/nfl/matchup?gameId=400791489"
+#url = "http://espn.go.com/nfl/matchup?gameId=400791489"
 
 team = []
 team.append(away)
 team.append(home)
-year = 2015
+year = 2014
 
 data = ID()
 teams = data.gatherTeams(url)
@@ -72,9 +72,13 @@ while team_count < len(team):
 
     print "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}".format(year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY,Turnovers,Sacks)
 
+    state = "INSERT INTO " + team[team_count] + " (year,team,week,home,scoreDiff,off_firstdown,def_firstdown,down_ratio,off_plays,def_plays,play_ratio,off_yards,def_yards,yard_ratio,ratio_inverse,off_yards_perplay,def_yards_perplay,ratio_yards,avg_penalty_yards,num_penalty,total_pentalty_yards,turnovers,sacks) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
-    cursor.execute("""INSERT INTO GB (year,team,week,home,scoreDiff,off_firstdown,def_firstdown,down_ratio,off_plays,def_plays,play_ratio,off_yards,def_yards,yard_ratio,ratio_inverse,off_yards_perplay,def_yards_perplay,ratio_yards,avg_penalty_yards,num_penalty,total_pentalty_yards,turnovers,sacks) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY,Turnovers,Sacks))
+    cursor.execute(state, (year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY,Turnovers,Sacks))
+
+#    cursor.execute("""INSERT INTO %s (year,team,week,home,scoreDiff,off_firstdown,def_firstdown,down_ratio,off_plays,def_plays,play_ratio,off_yards,def_yards,yard_ratio,ratio_inverse,off_yards_perplay,def_yards_perplay,ratio_yards,avg_penalty_yards,num_penalty,total_pentalty_yards,turnovers,sacks) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (team[team_count],year,team[team_count],week,place,scoreDiff,offFD,defFD,ratioFD,offPlays,defPlays,ratioPlays,offYards,defYards,ratioYards,invYardsRatio,offYPP,defYPP,"NULL",avgPenalties,totalP,totalPY,Turnovers,Sacks))
     mariadb_connection.commit()
 
     team_count += 1
-    mariadb_connection.close()
+
+mariadb_connection.close()
